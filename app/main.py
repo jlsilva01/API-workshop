@@ -1,45 +1,23 @@
 """ Arquivo principal do programa."""
-
 from fastapi import FastAPI
 from typing import Dict, List
+from .schema import ProdutosSchema
+from .data import Produtos
 
 app = FastAPI()
-
-produtos: List[Dict[str, any]] = [
-    {
-        "id": 1,
-        "nome": "Smartphone",
-        "descricao": "Um smartphone top de linha.",
-        "preco": 1500.00
-    },
-    {
-        "id": 2,
-        "nome": "Notebook",
-        "descricao": "Um notebook gamer.",
-        "preco": 3500.00
-    },
-    {
-        "id": 3,
-        "nome": "Tablet",
-        "descricao": "Um tablet intermediario.",
-        "preco": 1200.00
-    }
-]
+lista_de_produtos = Produtos()
 
 @app.get("/")
 def ola_mundo():
     """ Função que retorna uma mensagem de olá mundo."""
     return {"Ola": "Mundo"}
 
-@app.get("/produtos")
+@app.get("/produtos", response_model=List[ProdutosSchema])
 def listar_produtos():
     """ Função que retorna a lista de produtos."""
-    return produtos
+    return lista_de_produtos.listar_produtos()
 
-@app.get("/produtos/{id}")
+@app.get("/produtos/{id}", response_model=List[ProdutosSchema])
 def buscar_produto(id: int):
     """ Função que retorna um produto."""
-    for produto in produtos:
-        if produto["id"] == id:
-            return produto
-    return {"Status": 404, "Mensagem": "Produto não encontrado."}
+    return lista_de_produtos.buscar_produto(id)
