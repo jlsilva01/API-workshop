@@ -13,3 +13,7 @@ def test_ola_mundo_status_code():
 def test_ola_mundo_conteudo():
     response = client.get("/")
     assert response.json() == {"Ola": "Mundo"}
+    
+def test_listar_produtos_status_code():
+    response = client.get("/produtos")
+    assert len(response.json()) == 3
