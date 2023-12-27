@@ -1,6 +1,10 @@
+"""File that contains the data of the application."""
+
 from typing import Dict, List
 
 class Produtos:
+    """Class that contains the data of the application."""
+    
     produtos: List[Dict[str, any]] = [
         {
             "id": 1,
@@ -23,17 +27,17 @@ class Produtos:
     ]
 
     def listar_produtos(self):
-        """ Função que retorna a lista de produtos."""
+        """Função que retorna a lista de produtos."""
         return self.produtos
 
     def buscar_produto(self, id: int):
-        """ Função que retorna um produto."""
+        """Função que retorna um produto."""
         for produto in self.produtos:
             if produto["id"] == id:
                 return produto
         return {"Status": 404, "Erro": "Produto não encontrado."}
     
     def adicionar_produto(self, produto):
-        """ Função que adiciona um produto."""
+        """Função que adiciona um produto."""
         self.produtos.append(produto)
         return produto
