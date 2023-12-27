@@ -21,3 +21,8 @@ async def listar_produtos():
 async def buscar_produto(id: int):
     """ Função que retorna um produto."""
     return lista_de_produtos.buscar_produto(id)
+
+@app.post("/produto", response_model=ProdutosSchema)
+async def adicionar_produto(produto: ProdutosSchema):
+    """ Função que cria um produto."""
+    return lista_de_produtos.adicionar_produto(produto)
