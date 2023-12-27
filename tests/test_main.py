@@ -1,7 +1,5 @@
 import pytest
-
 from fastapi.testclient import TestClient
-
 from app.main import app
 
 client = TestClient(app)
@@ -23,10 +21,10 @@ def test_tamanho_lista_de_produtos():
     assert len(response.json()) == 3
     
 def test_pega_produto_um_produto():
-    response = client.get("/produtos/1")
+    response = client.get("/produto/1")
     assert response.json() == {
         "id": 1,
         "nome": "Smartphone",
         "descricao": "Um smartphone top de linha.",
-        "preco": 1500.00
+        "preco": 1500.00,
     }

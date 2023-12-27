@@ -6,19 +6,19 @@ class Produtos:
             "id": 1,
             "nome": "Smartphone",
             "descricao": "Um smartphone top de linha.",
-            "preco": 1500.00,
+            "preco": 1500.00
         },
         {
             "id": 2,
             "nome": "Notebook",
             "descricao": "Um notebook gamer.",
-            "preco": 3500.00,
+            "preco": 3500.00
         },
         {
             "id": 3,
             "nome": "Tablet",
             "descricao": "Um tablet intermediario.",
-            "preco": 1200.00,
+            "preco": 1200.00
         }
     ]
 
@@ -31,4 +31,4 @@ class Produtos:
         for produto in self.produtos:
             if produto["id"] == id:
                 return produto
-        return {"Status": 404, "Mensagem": "Produto não encontrado."}
+        return {"Status": 404, "Erro": "Produto não encontrado."}
